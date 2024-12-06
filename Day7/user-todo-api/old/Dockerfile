@@ -17,7 +17,7 @@ WORKDIR /app
 
 COPY --from=build /app /app
 
-COPY *.sh .
+COPY ./old/*.sh .
 
 RUN chmod +x docker-entrypoint.sh
 

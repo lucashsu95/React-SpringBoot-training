@@ -1,16 +1,18 @@
 services:
-  # app:
-  #   container_name: 'user-todo-app'
-  #   image: user-todo-image
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - db
-  #   volumes:
-  #     - ./src:/app/src
+  app:
+    container_name: 'user-todo-app'
+    image: user-todo-image
+    build:
+      context: .
+      dockerfile: ./old/Dockerfile
+    environment:
+        - JAVA_TOOL_OPTIONS=-Dspring.devtools.restart.enabled=true -Dspring.profiles.active=dev
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app/src
 
   db:
     container_name: 'user-todo-db'
@@ -28,16 +30,16 @@ services:
     ports:
       - "3306:3306"
 
-  phpmyadmin:
-    container_name: "user-todo-phpmyadmin"
-    image: "phpmyadmin:5.2.1"
-    environment:
-      - PMA_HOST=db
-      - PMA_PORT=3306
-    ports:
-      - "8080:80"
-    depends_on:
-      - db
+  # phpmyadmin:
+  #   container_name: "user-todo-phpmyadmin"
+  #   image: "phpmyadmin:5.2.1"
+  #   environment:
+  #     - PMA_HOST=db
+  #     - PMA_PORT=3306
+  #   ports:
+  #     - "8080:80"
+  #   depends_on:
+  #     - db
 
 volumes:
   user-todo-db-data:

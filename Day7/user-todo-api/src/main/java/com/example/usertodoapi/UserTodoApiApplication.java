@@ -9,10 +9,10 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @EnableJpaRepositories
 @EnableJpaAuditing
-public class UserTodoApiApiApplication {
+public class UserTodoApiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UserTodoApiApiApplication.class, args);
+        SpringApplication.run(UserTodoApiApplication.class, args);
     }
 
 }
